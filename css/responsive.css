@@ -505,3 +505,353 @@ body {
     grid-template-columns: 280px minmax(0, 1fr);
   }
 }
+
+/* ===============================
+   12. Самостоятельные доработки
+   =============================== */
+
+/* ----- 12.1. Мобильное меню с кнопкой-«бургером» ----- */
+
+/*
+  Шапка «прилипает» к верху экрана.
+  scroll-padding-top не даёт ей закрывать блок, к которому ведёт якорная ссылка.
+*/
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.15);
+}
+
+/* На телефоне логотип и кнопка меню стоят в одну строку, меню — под ними. */
+.site-header {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 12px;
+}
+
+.site-nav {
+  flex-basis: 100%;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* Кнопка скрыта атрибутом hidden, пока не загрузился JavaScript. */
+.nav-toggle[hidden] {
+  display: none;
+}
+
+/* Значок из трёх полосок нарисован псевдоэлементами. */
+.nav-toggle__icon,
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  display: block;
+  width: 22px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: currentColor;
+  transition: transform 0.2s;
+}
+
+.nav-toggle__icon {
+  position: relative;
+}
+
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle__icon::before {
+  top: -7px;
+}
+
+.nav-toggle__icon::after {
+  top: 7px;
+}
+
+/* Открытое меню: полоски складываются в крестик. */
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon {
+  background-color: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::before {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::after {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/*
+  Меню сворачивается только когда работает JavaScript (класс .js на <html>).
+  Без скриптов меню остаётся открытым — сайтом всё равно можно пользоваться.
+*/
+.js .site-nav {
+  display: none;
+}
+
+.js .site-nav.site-nav--open {
+  display: block;
+}
+
+/* Если пунктов много, а экран низкий — меню прокручивается само. */
+.site-nav--open {
+  max-height: calc(100dvh - 90px);
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    flex-wrap: nowrap;
+  }
+
+  .site-nav {
+    flex-basis: auto;
+  }
+
+  /* На планшете и desktop меню всегда видно, кнопка не нужна. */
+  .nav-toggle {
+    display: none;
+  }
+
+  .js .site-nav {
+    display: block;
+  }
+}
+
+/* ----- 12.2. Каталог: сворачиваемый фильтр ----- */
+
+.filters-toggle {
+  width: 100%;
+}
+
+.filters-toggle[hidden] {
+  display: none;
+}
+
+.filters-toggle[aria-expanded="true"] {
+  margin-bottom: 12px;
+}
+
+.js .catalog-filters {
+  display: none;
+}
+
+.js .catalog-filters.catalog-filters--open {
+  display: block;
+}
+
+/* Варианты фильтра на планшете — в несколько колонок, чтобы панель была ниже. */
+@media (min-width: 640px) {
+  .catalog-filters__groups {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .filters-toggle {
+    display: none;
+  }
+
+  .js .catalog-filters {
+    display: block;
+  }
+
+  /* В боковой колонке группы снова идут друг под другом. */
+  .catalog-filters__groups {
+    display: block;
+  }
+
+  /* Липкий фильтр учитывает высоту липкой шапки. */
+  .catalog-filters {
+    top: 104px;
+    max-height: calc(100dvh - 120px);
+    overflow-y: auto;
+  }
+}
+
+.filter-range {
+  width: 100%;
+  min-height: 32px;
+  accent-color: var(--color-primary);
+}
+
+/* ----- 12.3. Таблица сравнения → карточки на телефоне ----- */
+
+/*
+  Единственный запрос «сверху вниз» (max-width):
+  карточный вид нужен только там, где таблица не помещается.
+  Каждая строка становится карточкой, а название колонки
+  подставляется из атрибута data-label.
+*/
+@media (max-width: 639px) {
+  .table-wrapper--cards {
+    overflow-x: visible;
+  }
+
+  .product-table--cards {
+    min-width: 0;
+    background-color: transparent;
+  }
+
+  .product-table--cards,
+  .product-table--cards caption,
+  .product-table--cards tbody,
+  .product-table--cards tr,
+  .product-table--cards th,
+  .product-table--cards td {
+    display: block;
+  }
+
+  /* Шапка таблицы скрыта визуально, но остаётся для скринридера. */
+  .product-table--cards thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .product-table--cards tr {
+    margin-bottom: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-white);
+    overflow: hidden;
+  }
+
+  .product-table--cards th,
+  .product-table--cards td {
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .product-table--cards tr > :last-child {
+    border-bottom: 0;
+  }
+
+  .product-table--cards tbody th {
+    background-color: var(--color-surface-accent);
+    font-size: 18px;
+  }
+
+  .product-table--cards td {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    text-align: right;
+  }
+
+  .product-table--cards td::before {
+    content: attr(data-label);
+    flex: none;
+    max-width: 50%;
+    color: var(--color-muted);
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+/* ----- 12.4. Кнопка «Наверх» ----- */
+
+.back-to-top {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 22px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.3);
+}
+
+.back-to-top:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+.back-to-top[hidden] {
+  display: none;
+}
+
+/* Запас снизу, чтобы кнопка не закрывала последний текст подвала. */
+.site-footer__inner {
+  padding-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+  .back-to-top {
+    right: 32px;
+    bottom: 32px;
+  }
+}
+
+/* ----- 12.5. Мелкие улучшения ----- */
+
+/* На устройствах с мышью карточка приподнимается при наведении. */
+@media (hover: hover) {
+  .product-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgb(0 87 184 / 0.2);
+  }
+}
+
+/* Сводка заказа «прилипает» рядом с длинной формой. */
+@media (min-width: 1024px) {
+  .order-aside {
+    position: sticky;
+    top: 104px;
+  }
+}
+
+/* Печать: только содержимое, без меню, фильтра и кнопок. */
+@media print {
+  .page-header,
+  .catalog-filters,
+  .filters-toggle,
+  .back-to-top,
+  .map-container,
+  .skip-link,
+  .product-card__actions {
+    display: none !important;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
