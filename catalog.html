@@ -1,258 +1,429 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог товаров</title>
-    <link rel="icon" type="image/png" href="images/Ikonka.png">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог товаров</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/main.js" defer></script>
 </head>
-<header>
+<body>
+<header class="page-header">
   <div class="site-header">
     <a class="site-logo" href="index.html">Shop_ot_bob</a>
 
-    <nav aria-label="Основная навигация">
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
       <ul class="site-nav__list">
-        <li><a href="index.html">ГЛАВНАЯ</a></li>
-        <li><a href="catalog.html">ВСЕ ТОВАРЫ</a></li>
-        <li><a href="onas.html">О НАС</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+        <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="onas.html">О нас</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
+<main class="main">
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <ol class="breadcrumbs__list">
+      <li><a href="index.html">Главная</a></li>
+      <li>Каталог</li>
+    </ol>
+  </nav>
 
-<main>
-<section class="section" id="popular">
-    <h2>популярные товары</h2>
+  <h1 class="page-title">Каталог товаров</h1>
+  <p class="page-lead">Спортивные руки для армрестлинга и руки на каждый день.</p>
 
-    <article class="product-card">
-        <img
-            class="product-card__image"
-            src="images/pravaya_ruka.png"
-            alt="Правая рука для армрестлинга"
-        >
-        <h3>рука для армрестлинга (прав. муж)</h3>
-        <p>Крепкая мужская рука для армрестлинга, позволяет играюче бороть всех студентов вашего потока.</p>
-        <p>Цена: 32000 руб.</p>
-        <button class="button product-card__button" type="button" data-product="Товар 1">
-            Заказать
-        </button>
-    </article>
+  <div class="catalog-layout">
+    <div>
+    <form class="catalog-filters" id="catalog-filters" action="catalog.html" method="get" aria-labelledby="filters-title">
+      <h2 class="catalog-filters__title" id="filters-title">Фильтр</h2>
 
-    <article class="product-card">
-        <img
-            class="product-card__image"
-            src="images/levaya_ruka.png"
-            alt="Левая рука для армрестлинга"
-        >
-        <h3>рука для армрестлинга (лев. муж)</h3>
-        <p>Крепкая мужская рука для армрестлинга, позволяет играюче бороть всех студентов вашего потока.</p>
-        <p>Цена: 31000 руб.</p>
-        <button class="button product-card__button" type="button" data-product="Товар 2">
-            Заказать
-        </button>
-    </article>
-</section>
+      <div class="catalog-filters__groups">
+        <div class="filter-group">
+          <label class="filter-group__label" for="filter-search">Поиск по названию</label>
+          <input class="order-form__input" id="filter-search" name="search" type="search" placeholder="Например, Титан">
+        </div>
 
+        <fieldset class="filter-group">
+          <legend>Категория</legend>
+          <label class="filter-option"><input type="radio" name="category" value="all" checked> Все товары</label>
+          <label class="filter-option"><input type="radio" name="category" value="sport"> Для армрестлинга</label>
+          <label class="filter-option"><input type="radio" name="category" value="daily"> На каждый день</label>
+        </fieldset>
 
+        <fieldset class="filter-group">
+          <legend>Для кого</legend>
+          <label class="filter-option"><input type="checkbox" name="gender" value="m"> Мужские</label>
+          <label class="filter-option"><input type="checkbox" name="gender" value="f"> Женские</label>
+        </fieldset>
 
-<details class="catalog-details">
-    <summary>
-        <h2>все товары</h2>
-    </summary>
-    <p>Ниже представлен полный каталог товаров.</p>
+        <fieldset class="filter-group">
+          <legend>Сторона</legend>
+          <label class="filter-option"><input type="checkbox" name="side" value="right"> Правая</label>
+          <label class="filter-option"><input type="checkbox" name="side" value="left"> Левая</label>
+        </fieldset>
 
-    <div class="product-list" id="all">
+        <div class="filter-group">
+          <label class="filter-group__label" for="filter-price">Цена до, ₽</label>
+          <input class="order-form__input" id="filter-price" name="price" type="number" min="9000" max="32000" step="500" value="32000">
+        </div>
 
-        <article class="product-card">
-            <img
-            class="product-card__image"
-            src="images/pravaya_ruka.png"
-            alt="Правая рука для армрестлинга"
-        >
-            <h3>рука для армрестлинга (прав. муж)</h3>
-            <p>Крепкая мужская рука для армрестлинга, позволяет играюче бороть всех студентов вашего потока.</p>
-            <p>Цена: 32000 руб.</p>
-            <button class="button product-card__button" type="button" data-product="Товар 1">
-                Заказать
-            </button>
-        </article>
+        <div class="filter-group">
+          <label class="filter-option"><input type="checkbox" name="stock" value="1"> Только в наличии</label>
+        </div>
+      </div>
 
-        <article class="product-card">
-            <img
-            class="product-card__image"
-            src="images/levaya_ruka.png"
-            alt="Левая рука для армрестлинга"
-        >
-            <h3>рука для армрестлинга (лев. муж)</h3>
-            <p>Крепкая мужская рука для армрестлинга, позволяет играюче бороть всех студентов вашего потока.</p>
-            <p>Цена: 31000 руб.</p>
-            <button class="button product-card__button" type="button" data-product="Товар 2">
-                Заказать
-            </button>
-        </article>
-
-        <article class="product-card">
-            <img
-            class="product-card__image"
-            src="images/prav_zhenskaya_ruka.png"
-            alt="Правая женская рука для армрестлинга"
-        >
-            <h3>рука для армрестлинга (прав. жен)</h3>
-            <p>Крепкая женская рука для армрестлинга, позволяет играюче бороть всех студентов вашего потока.</p>
-            <p>Цена: 21000 руб.</p>
-            <button class="button product-card__button" type="button" data-product="Товар 3">
-                Заказать
-            </button>
-        </article>
-
-        <article class="product-card">
-            <img
-            class="product-card__image"
-            src="images/lev_zhenskaya_ruka.png"
-            alt="Левая женская рука для армрестлинга"
-        >
-            <h3>рука для армрестлинга (лев. жен)</h3>
-            <p>Крепкая женская рука для армрестлинга, позволяет играюче бороть всех студентов вашего потока.</p>
-            <p>Цена: 20500 руб.</p>
-            <button class="button product-card__button" type="button" data-product="Товар 4">
-                Заказать
-            </button>
-        </article>
-
-        <article class="product-card">
-            <img
-            class="product-card__image"
-            src="images/prav_ruka_kontur.png"
-            alt="Правая рука не для армрестлинга"
-        >
-            <h3>рука мужская (прав. обычная)</h3>
-            <p>Обычная мужская рука для выполнения бытовых задач,
-            !!! не предназначена для армрестлинга !!!
-            </p>
-            <p>Цена: 10000 руб.</p>
-            <button class="button product-card__button" type="button" data-product="Товар 5">
-                Заказать
-            </button>
-        </article>
-
-        <article class="product-card">
-            <img
-            class="product-card__image"
-            src="images/lev_ruka_kontur.png"
-            alt="Левая рука не для армрестлинга"
-        >
-            <h3>рука мужская (лев. обычная)</h3>
-            <p>Обычная мужская рука для выполнения бытовых задач,
-            !!! не предназначена для армрестлинга !!!
-            </p>
-            <p>Цена: 10000 руб.</p>
-            <button class="button product-card__button" type="button" data-product="Товар 6">
-                Заказать
-            </button>
-        </article>
-
-        <article class="product-card">
-            <img
-            class="product-card__image"
-            src="images/prav_tonkaya_zhenskaya_ruka.png"
-            alt="Правая женская рука для армрестлинга"
-        >
-            <h3>рука женская (прав. обычная)</h3>
-            <p>Обычная женская рука для выполнения бытовых задач,
-            !!! не предназначена для армрестлинга !!!
-            </p>
-            <p>Цена: 9000 руб.</p>
-            <button class="button product-card__button" type="button" data-product="Товар 7">
-                Заказать
-            </button>
-        </article>
-
-        <article class="product-card">
-            <img
-            class="product-card__image"
-            src="images/lev_tonkaya_zhenskaya_ruka.png"
-            alt="Левая женская рука для армрестлинга"
-        >
-            <h3>рука женская (лев. обычная)</h3>
-            <p>Обычная женская рука для выполнения бытовых задач,
-            !!! не предназначена для армрестлинга !!!
-            </p>
-            <p>Цена: 9000 руб.</p>
-            <button class="button product-card__button" type="button" data-product="Товар 8">
-                Заказать
-            </button>
-        </article>
+      <div class="form-actions">
+        <button class="button" type="submit">Применить</button>
+        <button class="button button--ghost" type="reset">Сбросить</button>
+      </div>
+    </form>
     </div>
-</details>
 
+    <section class="catalog-products" aria-labelledby="products-title">
+      <h2 class="section__title" id="products-title">Все товары</h2>
+
+      <div class="catalog-toolbar">
+        <p class="catalog-count" id="catalog-count">Найдено: 8 товаров</p>
+      </div>
+
+      <div class="products-grid">
+        <article class="product-card">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="images/pravaya_ruka-320.webp 320w,
+                      images/pravaya_ruka-480.webp 480w,
+                      images/pravaya_ruka-640.webp 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+            >
+            <img
+              class="product-card__image"
+              src="images/pravaya_ruka-480.jpg"
+              srcset="images/pravaya_ruka-320.jpg 320w,
+                      images/pravaya_ruka-480.jpg 480w,
+                      images/pravaya_ruka-640.jpg 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+              alt="Правая рука для армрестлинга"
+              width="640"
+              height="640"
+              loading="lazy"
+            >
+          </picture>
+          <div class="product-card__body">
+            <p class="product-card__badge">Хит</p>
+            <h3 class="product-card__title"><a href="product.html">Рука «Титан» — правая мужская</a></h3>
+            <p class="product-card__description">Крепкая мужская рука для армрестлинга. Позволяет играючи бороть всех студентов вашего потока.</p>
+            <p class="product-card__price">32&nbsp;000&nbsp;₽</p>
+            <div class="product-card__actions">
+              <a class="button button--ghost" href="product.html">Подробнее</a>
+              <button class="button product-card__button" type="button" data-product="Рука «Титан» — правая мужская">Заказать</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="images/levaya_ruka-320.webp 320w,
+                      images/levaya_ruka-480.webp 480w,
+                      images/levaya_ruka-640.webp 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+            >
+            <img
+              class="product-card__image"
+              src="images/levaya_ruka-480.jpg"
+              srcset="images/levaya_ruka-320.jpg 320w,
+                      images/levaya_ruka-480.jpg 480w,
+                      images/levaya_ruka-640.jpg 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+              alt="Левая рука для армрестлинга"
+              width="640"
+              height="640"
+              loading="lazy"
+            >
+          </picture>
+          <div class="product-card__body">
+            <p class="product-card__badge">Новинка</p>
+            <h3 class="product-card__title"><a href="product.html">Рука «Титан» — левая мужская</a></h3>
+            <p class="product-card__description">Левая версия флагмана для тех, кто борется на обе руки. Тот же мёртвый хват и усиленное предплечье.</p>
+            <p class="product-card__price">31&nbsp;000&nbsp;₽</p>
+            <div class="product-card__actions">
+              <a class="button button--ghost" href="product.html">Подробнее</a>
+              <button class="button product-card__button" type="button" data-product="Рука «Титан» — левая мужская">Заказать</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="images/prav_zhenskaya_ruka-320.webp 320w,
+                      images/prav_zhenskaya_ruka-480.webp 480w,
+                      images/prav_zhenskaya_ruka-640.webp 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+            >
+            <img
+              class="product-card__image"
+              src="images/prav_zhenskaya_ruka-480.jpg"
+              srcset="images/prav_zhenskaya_ruka-320.jpg 320w,
+                      images/prav_zhenskaya_ruka-480.jpg 480w,
+                      images/prav_zhenskaya_ruka-640.jpg 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+              alt="Правая женская рука для армрестлинга"
+              width="640"
+              height="640"
+              loading="lazy"
+            >
+          </picture>
+          <div class="product-card__body">
+            <p class="product-card__badge">Выбор чемпионок</p>
+            <h3 class="product-card__title"><a href="product.html">Рука «Валькирия» — правая женская</a></h3>
+            <p class="product-card__description">Лёгкая и быстрая женская рука для армрестлинга: резкий старт и цепкая кисть.</p>
+            <p class="product-card__price">21&nbsp;000&nbsp;₽</p>
+            <div class="product-card__actions">
+              <a class="button button--ghost" href="product.html">Подробнее</a>
+              <button class="button product-card__button" type="button" data-product="Рука «Валькирия» — правая женская">Заказать</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="images/lev_zhenskaya_ruka-320.webp 320w,
+                      images/lev_zhenskaya_ruka-480.webp 480w,
+                      images/lev_zhenskaya_ruka-640.webp 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+            >
+            <img
+              class="product-card__image"
+              src="images/lev_zhenskaya_ruka-480.jpg"
+              srcset="images/lev_zhenskaya_ruka-320.jpg 320w,
+                      images/lev_zhenskaya_ruka-480.jpg 480w,
+                      images/lev_zhenskaya_ruka-640.jpg 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+              alt="Левая женская рука для армрестлинга"
+              width="640"
+              height="640"
+              loading="lazy"
+            >
+          </picture>
+          <div class="product-card__body">
+            <p class="product-card__badge">Скидка −15%</p>
+            <h3 class="product-card__title"><a href="product.html">Рука «Валькирия» — левая женская</a></h3>
+            <p class="product-card__description">Левая «Валькирия» для борьбы на обе руки. Та же быстрая кисть, а сейчас ещё и по сниженной цене.</p>
+            <p class="product-card__price">20&nbsp;500&nbsp;₽ <del>24&nbsp;000&nbsp;₽</del></p>
+            <div class="product-card__actions">
+              <a class="button button--ghost" href="product.html">Подробнее</a>
+              <button class="button product-card__button" type="button" data-product="Рука «Валькирия» — левая женская">Заказать</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="images/prav_ruka_kontur-320.webp 320w,
+                      images/prav_ruka_kontur-480.webp 480w,
+                      images/prav_ruka_kontur-640.webp 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+            >
+            <img
+              class="product-card__image"
+              src="images/prav_ruka_kontur-480.jpg"
+              srcset="images/prav_ruka_kontur-320.jpg 320w,
+                      images/prav_ruka_kontur-480.jpg 480w,
+                      images/prav_ruka_kontur-640.jpg 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+              alt="Правая рука не для армрестлинга"
+              width="640"
+              height="640"
+              loading="lazy"
+            >
+          </picture>
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a href="product.html">Рука «Будни» — правая мужская</a></h3>
+            <p class="product-card__description">Обычная мужская рука для бытовых задач. Не предназначена для армрестлинга!</p>
+            <p class="product-card__price">10&nbsp;000&nbsp;₽</p>
+            <div class="product-card__actions">
+              <a class="button button--ghost" href="product.html">Подробнее</a>
+              <button class="button product-card__button" type="button" data-product="Рука «Будни» — правая мужская">Заказать</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="images/lev_ruka_kontur-320.webp 320w,
+                      images/lev_ruka_kontur-480.webp 480w,
+                      images/lev_ruka_kontur-640.webp 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+            >
+            <img
+              class="product-card__image"
+              src="images/lev_ruka_kontur-480.jpg"
+              srcset="images/lev_ruka_kontur-320.jpg 320w,
+                      images/lev_ruka_kontur-480.jpg 480w,
+                      images/lev_ruka_kontur-640.jpg 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+              alt="Левая рука не для армрестлинга"
+              width="640"
+              height="640"
+              loading="lazy"
+            >
+          </picture>
+          <div class="product-card__body">
+            <p class="product-card__badge">Под заказ</p>
+            <h3 class="product-card__title"><a href="product.html">Рука «Будни» — левая мужская</a></h3>
+            <p class="product-card__description">Левая мужская рука для повседневных дел. Не предназначена для армрестлинга!</p>
+            <p class="product-card__price">10&nbsp;000&nbsp;₽</p>
+            <div class="product-card__actions">
+              <a class="button button--ghost" href="product.html">Подробнее</a>
+              <button class="button product-card__button" type="button" data-product="Рука «Будни» — левая мужская">Заказать</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="images/prav_tonkaya_zhenskaya_ruka-320.webp 320w,
+                      images/prav_tonkaya_zhenskaya_ruka-480.webp 480w,
+                      images/prav_tonkaya_zhenskaya_ruka-640.webp 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+            >
+            <img
+              class="product-card__image"
+              src="images/prav_tonkaya_zhenskaya_ruka-480.jpg"
+              srcset="images/prav_tonkaya_zhenskaya_ruka-320.jpg 320w,
+                      images/prav_tonkaya_zhenskaya_ruka-480.jpg 480w,
+                      images/prav_tonkaya_zhenskaya_ruka-640.jpg 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+              alt="Правая женская рука для армрестлинга"
+              width="640"
+              height="640"
+              loading="lazy"
+            >
+          </picture>
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a href="product.html">Рука «Грация» — правая женская</a></h3>
+            <p class="product-card__description">Обычная женская рука для бытовых задач. Не предназначена для армрестлинга!</p>
+            <p class="product-card__price">9&nbsp;000&nbsp;₽</p>
+            <div class="product-card__actions">
+              <a class="button button--ghost" href="product.html">Подробнее</a>
+              <button class="button product-card__button" type="button" data-product="Рука «Грация» — правая женская">Заказать</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="images/lev_tonkaya_zhenskaya_ruka-320.webp 320w,
+                      images/lev_tonkaya_zhenskaya_ruka-480.webp 480w,
+                      images/lev_tonkaya_zhenskaya_ruka-640.webp 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+            >
+            <img
+              class="product-card__image"
+              src="images/lev_tonkaya_zhenskaya_ruka-480.jpg"
+              srcset="images/lev_tonkaya_zhenskaya_ruka-320.jpg 320w,
+                      images/lev_tonkaya_zhenskaya_ruka-480.jpg 480w,
+                      images/lev_tonkaya_zhenskaya_ruka-640.jpg 640w"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 280px"
+              alt="Левая женская рука для армрестлинга"
+              width="640"
+              height="640"
+              loading="lazy"
+            >
+          </picture>
+          <div class="product-card__body">
+            <h3 class="product-card__title"><a href="product.html">Рука «Грация» — левая женская</a></h3>
+            <p class="product-card__description">Левая женская рука для бытовых задач. Не предназначена для армрестлинга!</p>
+            <p class="product-card__price">9&nbsp;000&nbsp;₽</p>
+            <div class="product-card__actions">
+              <a class="button button--ghost" href="product.html">Подробнее</a>
+              <button class="button product-card__button" type="button" data-product="Рука «Грация» — левая женская">Заказать</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <p class="success-message" id="quick-success" role="status" hidden>
+  Форма успешно отправлена!
+</p>
 </main>
 
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__col">
+      <p class="site-footer__title">Shop_ot_bob</p>
+      <p>Учебный интернет-магазин необычных товаров с характером.</p>
+    </div>
 
+    <nav class="site-footer__col" aria-label="Навигация в подвале">
+      <p class="site-footer__title">Разделы</p>
+      <ul class="site-footer__list">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="order.html">Заявка</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="onas.html">О нас</a></li>
+      </ul>
+    </nav>
 
-<footer id="contacts">
-  <p>&copy; 2026 Учебный проект. Все права защищены. Работал Исмаилов Полад ЭФБО-04-25</p>
-  <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    <div class="site-footer__col">
+      <p class="site-footer__title">Контакты</p>
+      <ul class="site-footer__list">
+        <li><a href="tel:+79000000000">+7 (900) 000-00-00</a></li>
+        <li><a href="mailto:shop@example.com">shop@example.com</a></li>
+      </ul>
+      <p class="site-footer__copy">&copy; 2026 Учебный проект. Все права защищены. Работал Исмаилов Полад, ЭФБО-04-25.</p>
+      <p class="site-footer__copy">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </div>
+  </div>
 </footer>
-<dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-  <h2 id="order-dialog-title" tabindex="-1" autofocus>Оформление заявки</h2>
 
-  <form class="order-form" id="order-form" action="#" method="post" novalidate>
+<dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+  <h2 class="order-dialog__title" id="order-dialog-title" tabindex="-1" autofocus>Быстрая заявка</h2>
+
+  <form class="order-form order-form--single js-form" id="quick-form" action="#" method="post" data-success="quick-success" novalidate>
     <input id="selected-product" name="selected-product" type="hidden">
 
-    <div class="form-field">
-      <label for="order-name">Имя</label>
-      <input
-        id="order-name"
-        name="name"
-        type="text"
-        placeholder="Введите ваше имя"
-        minlength="2"
-        autocomplete="given-name"
-        required
-      >
+    <div class="order-form__group">
+      <label class="order-form__label" for="quick-name">Имя</label>
+      <input class="order-form__input" id="quick-name" name="name" type="text" minlength="2" autocomplete="given-name" placeholder="Введите ваше имя" required>
     </div>
 
-    <div class="form-field">
-      <label for="order-email">E-mail</label>
-      <input
-        id="order-email"
-        name="email"
-        type="email"
-        placeholder="example@mail.ru"
-        autocomplete="email"
-        required
-      >
+    <div class="order-form__group">
+      <label class="order-form__label" for="quick-email">E-mail</label>
+      <input class="order-form__input" id="quick-email" name="email" type="email" autocomplete="email" placeholder="example@mail.ru" required>
     </div>
 
-    <div class="form-field">
-      <label for="order-phone">Телефон</label>
-      <input
-        id="order-phone"
-        name="phone"
-        type="tel"
-        inputmode="tel"
-        placeholder="+7 (900) 000-00-00"
-        pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
-        required
-      >
-      <small>Формат: +7 (900) 000-00-00</small>
+    <div class="order-form__group">
+      <label class="order-form__label" for="quick-phone">Телефон</label>
+      <input class="order-form__input" id="quick-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+      <p class="form-note" id="quick-phone-hint">Формат: +7 (900) 000-00-00</p>
     </div>
 
-    <div class="form-field">
-      <label for="order-date">Дата связи</label>
-      <input
-        id="order-date"
-        name="date"
-        type="date"
-      >
-    </div>
-
-    <div class="form-field">
-      <label for="order-topic">Тема заявки</label>
-      <select id="order-topic" name="topic" required>
+    <div class="order-form__group">
+      <label class="order-form__label" for="quick-topic">Тема заявки</label>
+      <select class="order-form__select" id="quick-topic" name="topic" required>
         <option value="">Выберите тему</option>
         <option value="product">Заказ товара</option>
         <option value="consultation">Консультация</option>
@@ -260,37 +431,23 @@
       </select>
     </div>
 
-    <div class="form-field">
-      <label for="order-comment">Комментарий</label>
-      <textarea
-        id="order-comment"
-        name="comment"
-        rows="4"
-        placeholder="Укажите дополнительную информацию"
-      ></textarea>
+    <div class="order-form__group">
+      <label class="order-form__label" for="quick-comment">Комментарий</label>
+      <textarea class="order-form__textarea" id="quick-comment" name="comment" rows="3" placeholder="Укажите дополнительную информацию"></textarea>
     </div>
 
-    <div class="form-field form-field--checkbox">
-      <label for="order-agreement">
-        <input
-          id="order-agreement"
-          name="agreement"
-          type="checkbox"
-          required
-        >
+    <div class="order-form__group order-form__group--wide">
+      <label class="order-form__check" for="quick-agreement">
+        <input id="quick-agreement" name="agreement" type="checkbox" required>
         Я согласен на обработку данных
       </label>
     </div>
 
     <div class="form-actions">
-      <button type="button" id="close-order-dialog">Закрыть</button>
-      <button type="submit">Отправить заявку</button>
+      <button class="button" type="submit">Отправить заявку</button>
+      <button class="button button--ghost" type="button" data-close-dialog>Закрыть</button>
     </div>
   </form>
 </dialog>
-
-<p class="success-message" id="success-message" role="status" hidden>
-  Форма успешно отправлена!
-</p>
 </body>
 </html>
