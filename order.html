@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Заявка</title>
+  <title>Оформление заявки — Shop_ot_bob</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
   <script src="js/main.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
 <header class="page-header">
   <div class="site-header">
     <a class="site-logo" href="index.html">Shop_ot_bob</a>
@@ -18,7 +20,7 @@
       <ul class="site-nav__list">
         <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
         <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
-        <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="order.html">Заявка</a></li>
+        <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="order.html" aria-current="page">Заявка</a></li>
         <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
         <li class="site-nav__item"><a class="site-nav__link" href="onas.html">О нас</a></li>
       </ul>
@@ -26,16 +28,18 @@
   </div>
 </header>
 
-<main class="main">
+<main class="main" id="main" tabindex="-1">
   <h1 class="page-title">Оформление заявки</h1>
   <p class="page-lead">Заполните форму — мы перезвоним и уточним детали. Форма учебная: данные никуда не отправляются.</p>
+
+  <p class="form-note page-note">Поля со звёздочкой <span class="order-form__required" aria-hidden="true">*</span> обязательны.</p>
 
   <div class="order-layout">
     <div>
       <form class="order-form js-form" id="order-form" action="#" method="post" data-success="order-success" novalidate>
         <div class="order-form__group">
-          <label class="order-form__label" for="order-product">Товар</label>
-          <select class="order-form__select" id="order-product" name="product" required>
+          <label class="order-form__label" for="order-product">Товар <span class="order-form__required" aria-hidden="true">*</span></label>
+          <select class="order-form__select" id="order-product" name="product" required aria-describedby="order-product-error">
             <option value="">Выберите товар</option>
             <option value="1">Рука «Титан» — правая мужская — 32&nbsp;000&nbsp;₽</option>
             <option value="2">Рука «Титан» — левая мужская — 31&nbsp;000&nbsp;₽</option>
@@ -46,34 +50,40 @@
             <option value="7">Рука «Грация» — правая женская — 9&nbsp;000&nbsp;₽</option>
             <option value="8">Рука «Грация» — левая женская — 9&nbsp;000&nbsp;₽</option>
           </select>
+          <p class="form-error" id="order-product-error" hidden></p>
         </div>
 
         <div class="order-form__group">
-          <label class="order-form__label" for="order-quantity">Количество</label>
-          <input class="order-form__input" id="order-quantity" name="quantity" type="number" min="1" max="10" value="1" inputmode="numeric" required>
+          <label class="order-form__label" for="order-quantity">Количество <span class="order-form__required" aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-quantity" name="quantity" type="number" min="1" max="10" value="1" inputmode="numeric" required aria-describedby="order-quantity-hint order-quantity-error">
           <p class="form-note" id="order-quantity-hint">От 1 до 10 штук</p>
+          <p class="form-error" id="order-quantity-error" hidden></p>
         </div>
 
         <div class="order-form__group">
-          <label class="order-form__label" for="order-name">Имя</label>
-          <input class="order-form__input" id="order-name" name="name" type="text" minlength="2" autocomplete="given-name" placeholder="Введите ваше имя" required>
+          <label class="order-form__label" for="order-name">Имя <span class="order-form__required" aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-name" name="name" type="text" minlength="2" autocomplete="given-name" placeholder="Введите ваше имя" required aria-describedby="order-name-error">
+          <p class="form-error" id="order-name-error" hidden></p>
         </div>
 
         <div class="order-form__group">
-          <label class="order-form__label" for="order-email">E-mail</label>
-          <input class="order-form__input" id="order-email" name="email" type="email" autocomplete="email" placeholder="example@mail.ru" required>
+          <label class="order-form__label" for="order-email">E-mail <span class="order-form__required" aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-email" name="email" type="email" autocomplete="email" placeholder="example@mail.ru" required aria-describedby="order-email-error">
+          <p class="form-error" id="order-email-error" hidden></p>
         </div>
 
         <div class="order-form__group">
-          <label class="order-form__label" for="order-phone">Телефон</label>
-          <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+          <label class="order-form__label" for="order-phone">Телефон <span class="order-form__required" aria-hidden="true">*</span></label>
+          <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required data-error="Введите телефон в формате +7 (900) 000-00-00" aria-describedby="order-phone-hint order-phone-error">
           <p class="form-note" id="order-phone-hint">Формат: +7 (900) 000-00-00</p>
+          <p class="form-error" id="order-phone-error" hidden></p>
         </div>
 
         <div class="order-form__group">
           <label class="order-form__label" for="order-date">Дата связи</label>
-          <input class="order-form__input" id="order-date" name="date" type="date">
+          <input class="order-form__input" id="order-date" name="date" type="date" aria-describedby="order-date-hint order-date-error">
           <p class="form-note" id="order-date-hint">Необязательно</p>
+          <p class="form-error" id="order-date-error" hidden></p>
         </div>
 
         <fieldset class="order-form__fieldset order-form__group--wide">
@@ -90,20 +100,23 @@
 
         <div class="order-form__group order-form__group--wide">
           <label class="order-form__label" for="order-address">Адрес доставки</label>
-          <input class="order-form__input" id="order-address" name="address" type="text" autocomplete="street-address" placeholder="Город, улица, дом, квартира">
+          <input class="order-form__input" id="order-address" name="address" type="text" autocomplete="street-address" placeholder="Город, улица, дом, квартира" aria-describedby="order-address-hint order-address-error">
           <p class="form-note" id="order-address-hint">Нужен только для доставки курьером</p>
+          <p class="form-error" id="order-address-error" hidden></p>
         </div>
 
         <div class="order-form__group order-form__group--wide">
           <label class="order-form__label" for="order-comment">Комментарий</label>
-          <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4" placeholder="Укажите дополнительную информацию"></textarea>
+          <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4" placeholder="Укажите дополнительную информацию" aria-describedby="order-comment-error"></textarea>
+          <p class="form-error" id="order-comment-error" hidden></p>
         </div>
 
         <div class="order-form__group order-form__group--wide">
           <label class="order-form__check" for="order-agreement">
-            <input id="order-agreement" name="agreement" type="checkbox" required>
+            <input id="order-agreement" name="agreement" type="checkbox" required aria-describedby="order-agreement-error" data-error="Отметьте согласие на обработку данных">
             Я согласен на обработку данных
           </label>
+          <p class="form-error" id="order-agreement-error" hidden></p>
         </div>
 
         <div class="form-actions">
@@ -112,9 +125,7 @@
         </div>
       </form>
 
-      <p class="success-message" id="order-success" role="status" hidden>
-  Форма успешно отправлена!
-</p>
+      <p class="success-message" id="order-success" role="status"></p>
     </div>
 
     <aside class="order-aside" aria-label="Информация о заказе">

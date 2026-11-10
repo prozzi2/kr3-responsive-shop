@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Учебный интернет-магазин</title>
+  <title>Shop_ot_bob — руки для армрестлинга и на каждый день</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
   <script src="js/main.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
 <header class="page-header">
   <div class="site-header">
     <a class="site-logo" href="index.html">Shop_ot_bob</a>
 
     <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
       <ul class="site-nav__list">
-        <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html">Главная</a></li>
+        <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html" aria-current="page">Главная</a></li>
         <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
         <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
         <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
@@ -26,7 +28,7 @@
   </div>
 </header>
 
-<main class="main">
+<main class="main" id="main" tabindex="-1">
   <section class="hero section">
     <div class="hero__content">
       <h1 class="hero__title">Руки для армрестлинга и на каждый день</h1>
@@ -77,7 +79,7 @@
                   images/hero-wide-1200.jpg 1200w,
                   images/hero-wide-1600.jpg 1600w"
           sizes="(max-width: 899px) 480px, (max-width: 1187px) 45vw, 520px"
-          alt="Реклама товаров"
+          alt="Рисунок: кудрявый парень в очках и футболке — основатель магазина. Рукописные надписи: «Получите силу практически даром», «100 мощи», «Побори всех»"
           width="1628"
           height="1472"
         >
@@ -131,7 +133,7 @@
                     images/pravaya_ruka-480.jpg 480w,
                     images/pravaya_ruka-640.jpg 640w"
             sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 270px"
-            alt="Правая рука для армрестлинга"
+            alt="Рисунок: согнутая в локте правая мужская рука с крупным бицепсом и сжатым кулаком"
             width="640"
             height="640"
             loading="lazy"
@@ -143,8 +145,8 @@
           <p class="product-card__description">Крепкая мужская рука для армрестлинга. Позволяет играючи бороть всех студентов вашего потока.</p>
           <p class="product-card__price">32&nbsp;000&nbsp;₽</p>
           <div class="product-card__actions">
-            <a class="button button--ghost" href="product.html">Подробнее</a>
-            <button class="button product-card__button" type="button" data-product="Рука «Титан» — правая мужская">Заказать</button>
+            <a class="button button--ghost" href="product.html" aria-label="Подробнее: Рука «Титан» — правая мужская">Подробнее</a>
+            <button class="button product-card__button" type="button" data-product="Рука «Титан» — правая мужская" aria-label="Заказать: Рука «Титан» — правая мужская">Заказать</button>
           </div>
         </div>
       </article>
@@ -165,7 +167,7 @@
                     images/levaya_ruka-480.jpg 480w,
                     images/levaya_ruka-640.jpg 640w"
             sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 270px"
-            alt="Левая рука для армрестлинга"
+            alt="Рисунок: согнутая в локте левая мужская рука с крупным бицепсом и сжатым кулаком"
             width="640"
             height="640"
             loading="lazy"
@@ -177,8 +179,8 @@
           <p class="product-card__description">Левая версия флагмана для тех, кто борется на обе руки. Тот же мёртвый хват и усиленное предплечье.</p>
           <p class="product-card__price">31&nbsp;000&nbsp;₽</p>
           <div class="product-card__actions">
-            <a class="button button--ghost" href="product.html">Подробнее</a>
-            <button class="button product-card__button" type="button" data-product="Рука «Титан» — левая мужская">Заказать</button>
+            <a class="button button--ghost" href="product.html" aria-label="Подробнее: Рука «Титан» — левая мужская">Подробнее</a>
+            <button class="button product-card__button" type="button" data-product="Рука «Титан» — левая мужская" aria-label="Заказать: Рука «Титан» — левая мужская">Заказать</button>
           </div>
         </div>
       </article>
@@ -199,7 +201,7 @@
                     images/prav_zhenskaya_ruka-480.jpg 480w,
                     images/prav_zhenskaya_ruka-640.jpg 640w"
             sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 270px"
-            alt="Правая женская рука для армрестлинга"
+            alt="Рисунок: согнутая в локте правая женская рука с рельефным бицепсом"
             width="640"
             height="640"
             loading="lazy"
@@ -211,8 +213,8 @@
           <p class="product-card__description">Лёгкая и быстрая женская рука для армрестлинга: резкий старт и цепкая кисть.</p>
           <p class="product-card__price">21&nbsp;000&nbsp;₽</p>
           <div class="product-card__actions">
-            <a class="button button--ghost" href="product.html">Подробнее</a>
-            <button class="button product-card__button" type="button" data-product="Рука «Валькирия» — правая женская">Заказать</button>
+            <a class="button button--ghost" href="product.html" aria-label="Подробнее: Рука «Валькирия» — правая женская">Подробнее</a>
+            <button class="button product-card__button" type="button" data-product="Рука «Валькирия» — правая женская" aria-label="Заказать: Рука «Валькирия» — правая женская">Заказать</button>
           </div>
         </div>
       </article>
@@ -233,7 +235,7 @@
                     images/lev_zhenskaya_ruka-480.jpg 480w,
                     images/lev_zhenskaya_ruka-640.jpg 640w"
             sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 270px"
-            alt="Левая женская рука для армрестлинга"
+            alt="Рисунок: согнутая в локте левая женская рука с рельефным бицепсом"
             width="640"
             height="640"
             loading="lazy"
@@ -243,10 +245,10 @@
           <p class="product-card__badge">Скидка −15%</p>
           <h3 class="product-card__title"><a href="product.html">Рука «Валькирия» — левая женская</a></h3>
           <p class="product-card__description">Левая «Валькирия» для борьбы на обе руки. Та же быстрая кисть, а сейчас ещё и по сниженной цене.</p>
-          <p class="product-card__price">20&nbsp;500&nbsp;₽ <del>24&nbsp;000&nbsp;₽</del></p>
+          <p class="product-card__price">20&nbsp;500&nbsp;₽ <span class="visually-hidden">Старая цена:</span> <del>24&nbsp;000&nbsp;₽</del></p>
           <div class="product-card__actions">
-            <a class="button button--ghost" href="product.html">Подробнее</a>
-            <button class="button product-card__button" type="button" data-product="Рука «Валькирия» — левая женская">Заказать</button>
+            <a class="button button--ghost" href="product.html" aria-label="Подробнее: Рука «Валькирия» — левая женская">Подробнее</a>
+            <button class="button product-card__button" type="button" data-product="Рука «Валькирия» — левая женская" aria-label="Заказать: Рука «Валькирия» — левая женская">Заказать</button>
           </div>
         </div>
       </article>
@@ -260,13 +262,11 @@
   <section class="section" id="map" aria-labelledby="map-title">
     <h2 class="section__title" id="map-title">Где нас найти</h2>
     <div class="map-container">
-      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A89a524108dad21f16cf2f4a0d76adc41d935ef46cfc1c6afd9af5f4293ef12c2&amp;source=constructor" frameborder="0"></iframe>
+      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A89a524108dad21f16cf2f4a0d76adc41d935ef46cfc1c6afd9af5f4293ef12c2&amp;source=constructor" title="Яндекс Карта: как добраться до магазина Shop_ot_bob" loading="lazy"></iframe>
     </div>
   </section>
 
-  <p class="success-message" id="quick-success" role="status" hidden>
-  Форма успешно отправлена!
-</p>
+  <p class="success-message" id="quick-success" role="status"></p>
 </main>
 
 <footer class="site-footer">
@@ -300,47 +300,60 @@
 </footer>
 
 <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-  <h2 class="order-dialog__title" id="order-dialog-title" tabindex="-1" autofocus>Быстрая заявка</h2>
+  <div class="order-dialog__header">
+    <h2 class="order-dialog__title" id="order-dialog-title" tabindex="-1" autofocus>Быстрая заявка</h2>
+    <button class="modal__close" type="button" aria-label="Закрыть окно" data-close-dialog>
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+
+  <p class="order-dialog__product">Товар: <strong id="selected-product-text"></strong></p>
 
   <form class="order-form order-form--single js-form" id="quick-form" action="#" method="post" data-success="quick-success" novalidate>
     <input id="selected-product" name="selected-product" type="hidden">
 
     <div class="order-form__group">
-      <label class="order-form__label" for="quick-name">Имя</label>
-      <input class="order-form__input" id="quick-name" name="name" type="text" minlength="2" autocomplete="given-name" placeholder="Введите ваше имя" required>
+      <label class="order-form__label" for="quick-name">Имя <span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="quick-name" name="name" type="text" minlength="2" autocomplete="given-name" placeholder="Введите ваше имя" required aria-describedby="quick-name-error">
+      <p class="form-error" id="quick-name-error" hidden></p>
     </div>
 
     <div class="order-form__group">
-      <label class="order-form__label" for="quick-email">E-mail</label>
-      <input class="order-form__input" id="quick-email" name="email" type="email" autocomplete="email" placeholder="example@mail.ru" required>
+      <label class="order-form__label" for="quick-email">E-mail <span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="quick-email" name="email" type="email" autocomplete="email" placeholder="example@mail.ru" required aria-describedby="quick-email-error">
+      <p class="form-error" id="quick-email-error" hidden></p>
     </div>
 
     <div class="order-form__group">
-      <label class="order-form__label" for="quick-phone">Телефон</label>
-      <input class="order-form__input" id="quick-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+      <label class="order-form__label" for="quick-phone">Телефон <span class="order-form__required" aria-hidden="true">*</span></label>
+      <input class="order-form__input" id="quick-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required data-error="Введите телефон в формате +7 (900) 000-00-00" aria-describedby="quick-phone-hint quick-phone-error">
       <p class="form-note" id="quick-phone-hint">Формат: +7 (900) 000-00-00</p>
+      <p class="form-error" id="quick-phone-error" hidden></p>
     </div>
 
     <div class="order-form__group">
-      <label class="order-form__label" for="quick-topic">Тема заявки</label>
-      <select class="order-form__select" id="quick-topic" name="topic" required>
+      <label class="order-form__label" for="quick-topic">Тема заявки <span class="order-form__required" aria-hidden="true">*</span></label>
+      <select class="order-form__select" id="quick-topic" name="topic" required aria-describedby="quick-topic-error">
         <option value="">Выберите тему</option>
         <option value="product">Заказ товара</option>
         <option value="consultation">Консультация</option>
         <option value="delivery">Доставка</option>
       </select>
+      <p class="form-error" id="quick-topic-error" hidden></p>
     </div>
 
     <div class="order-form__group">
       <label class="order-form__label" for="quick-comment">Комментарий</label>
-      <textarea class="order-form__textarea" id="quick-comment" name="comment" rows="3" placeholder="Укажите дополнительную информацию"></textarea>
+      <textarea class="order-form__textarea" id="quick-comment" name="comment" rows="3" placeholder="Укажите дополнительную информацию" aria-describedby="quick-comment-error"></textarea>
+      <p class="form-error" id="quick-comment-error" hidden></p>
     </div>
 
     <div class="order-form__group order-form__group--wide">
       <label class="order-form__check" for="quick-agreement">
-        <input id="quick-agreement" name="agreement" type="checkbox" required>
+        <input id="quick-agreement" name="agreement" type="checkbox" required aria-describedby="quick-agreement-error" data-error="Отметьте согласие на обработку данных">
         Я согласен на обработку данных
       </label>
+      <p class="form-error" id="quick-agreement-error" hidden></p>
     </div>
 
     <div class="form-actions">
