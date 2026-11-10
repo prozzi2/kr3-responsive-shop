@@ -16,6 +16,11 @@
   <div class="site-header">
     <a class="site-logo" href="index.html">Shop_ot_bob</a>
 
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+      Меню
+    </button>
+
     <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
       <ul class="site-nav__list">
         <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
@@ -129,6 +134,16 @@
     </div>
 
     <aside class="order-aside" aria-label="Информация о заказе">
+      <h2>Ваш заказ</h2>
+      <!-- aria-live: скринридер сообщит об изменении суммы -->
+      <dl class="order-summary" id="order-summary" aria-live="polite">
+        <div><dt>Товар</dt><dd id="summary-product">не выбран</dd></div>
+        <div><dt>Количество</dt><dd id="summary-quantity">1 шт.</dd></div>
+        <div><dt>Товары</dt><dd id="summary-goods">0 ₽</dd></div>
+        <div><dt>Доставка</dt><dd id="summary-delivery">бесплатно</dd></div>
+        <div><dt>Итого</dt><dd id="summary-total">0 ₽</dd></div>
+      </dl>
+
       <h2>Как мы работаем</h2>
       <ol class="order-steps">
         <li>Вы оставляете заявку на сайте.</li>
@@ -169,5 +184,7 @@
     </div>
   </div>
 </footer>
+
+<a class="back-to-top" href="#top" aria-label="Наверх, к началу страницы"><span aria-hidden="true">↑</span></a>
 </body>
 </html>

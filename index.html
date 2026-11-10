@@ -16,6 +16,11 @@
   <div class="site-header">
     <a class="site-logo" href="index.html">Shop_ot_bob</a>
 
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+      Меню
+    </button>
+
     <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
       <ul class="site-nav__list">
         <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html" aria-current="page">Главная</a></li>
@@ -141,11 +146,11 @@
         </picture>
         <div class="product-card__body">
           <p class="product-card__badge">Хит</p>
-          <h3 class="product-card__title"><a href="product.html">Рука «Титан» — правая мужская</a></h3>
+          <h3 class="product-card__title"><a href="product.html?id=1">Рука «Титан» — правая мужская</a></h3>
           <p class="product-card__description">Крепкая мужская рука для армрестлинга. Позволяет играючи бороть всех студентов вашего потока.</p>
           <p class="product-card__price">32&nbsp;000&nbsp;₽</p>
           <div class="product-card__actions">
-            <a class="button button--ghost" href="product.html" aria-label="Подробнее: Рука «Титан» — правая мужская">Подробнее</a>
+            <a class="button button--ghost" href="product.html?id=1" aria-label="Подробнее: Рука «Титан» — правая мужская">Подробнее</a>
             <button class="button product-card__button" type="button" data-product="Рука «Титан» — правая мужская" aria-label="Заказать: Рука «Титан» — правая мужская">Заказать</button>
           </div>
         </div>
@@ -175,11 +180,11 @@
         </picture>
         <div class="product-card__body">
           <p class="product-card__badge">Новинка</p>
-          <h3 class="product-card__title"><a href="product.html">Рука «Титан» — левая мужская</a></h3>
+          <h3 class="product-card__title"><a href="product.html?id=2">Рука «Титан» — левая мужская</a></h3>
           <p class="product-card__description">Левая версия флагмана для тех, кто борется на обе руки. Тот же мёртвый хват и усиленное предплечье.</p>
           <p class="product-card__price">31&nbsp;000&nbsp;₽</p>
           <div class="product-card__actions">
-            <a class="button button--ghost" href="product.html" aria-label="Подробнее: Рука «Титан» — левая мужская">Подробнее</a>
+            <a class="button button--ghost" href="product.html?id=2" aria-label="Подробнее: Рука «Титан» — левая мужская">Подробнее</a>
             <button class="button product-card__button" type="button" data-product="Рука «Титан» — левая мужская" aria-label="Заказать: Рука «Титан» — левая мужская">Заказать</button>
           </div>
         </div>
@@ -209,11 +214,11 @@
         </picture>
         <div class="product-card__body">
           <p class="product-card__badge">Выбор чемпионок</p>
-          <h3 class="product-card__title"><a href="product.html">Рука «Валькирия» — правая женская</a></h3>
+          <h3 class="product-card__title"><a href="product.html?id=3">Рука «Валькирия» — правая женская</a></h3>
           <p class="product-card__description">Лёгкая и быстрая женская рука для армрестлинга: резкий старт и цепкая кисть.</p>
           <p class="product-card__price">21&nbsp;000&nbsp;₽</p>
           <div class="product-card__actions">
-            <a class="button button--ghost" href="product.html" aria-label="Подробнее: Рука «Валькирия» — правая женская">Подробнее</a>
+            <a class="button button--ghost" href="product.html?id=3" aria-label="Подробнее: Рука «Валькирия» — правая женская">Подробнее</a>
             <button class="button product-card__button" type="button" data-product="Рука «Валькирия» — правая женская" aria-label="Заказать: Рука «Валькирия» — правая женская">Заказать</button>
           </div>
         </div>
@@ -243,11 +248,11 @@
         </picture>
         <div class="product-card__body">
           <p class="product-card__badge">Скидка −15%</p>
-          <h3 class="product-card__title"><a href="product.html">Рука «Валькирия» — левая женская</a></h3>
+          <h3 class="product-card__title"><a href="product.html?id=4">Рука «Валькирия» — левая женская</a></h3>
           <p class="product-card__description">Левая «Валькирия» для борьбы на обе руки. Та же быстрая кисть, а сейчас ещё и по сниженной цене.</p>
           <p class="product-card__price">20&nbsp;500&nbsp;₽ <span class="visually-hidden">Старая цена:</span> <del>24&nbsp;000&nbsp;₽</del></p>
           <div class="product-card__actions">
-            <a class="button button--ghost" href="product.html" aria-label="Подробнее: Рука «Валькирия» — левая женская">Подробнее</a>
+            <a class="button button--ghost" href="product.html?id=4" aria-label="Подробнее: Рука «Валькирия» — левая женская">Подробнее</a>
             <button class="button product-card__button" type="button" data-product="Рука «Валькирия» — левая женская" aria-label="Заказать: Рука «Валькирия» — левая женская">Заказать</button>
           </div>
         </div>
@@ -256,6 +261,8 @@
 
     <p class="hero__actions">
       <a class="button" href="catalog.html">Весь каталог</a>
+      <a class="button button--ghost" href="catalog.html?category=sport">Для армрестлинга</a>
+      <a class="button button--ghost" href="catalog.html?category=daily">На каждый день</a>
     </p>
   </section>
 
@@ -298,6 +305,8 @@
     </div>
   </div>
 </footer>
+
+<a class="back-to-top" href="#top" aria-label="Наверх, к началу страницы"><span aria-hidden="true">↑</span></a>
 
 <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
   <div class="order-dialog__header">

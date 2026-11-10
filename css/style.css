@@ -525,6 +525,28 @@ button {
   margin-bottom: var(--space-sm);
 }
 
+.order-summary {
+  margin: 0 0 var(--space-lg);
+}
+
+.order-summary div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.order-summary dt {
+  color: var(--color-muted);
+}
+
+.order-summary dd {
+  margin: 0;
+  font-weight: bold;
+  text-align: right;
+}
+
 .about p {
   margin: 0 0 20px;
   line-height: 1.7;
