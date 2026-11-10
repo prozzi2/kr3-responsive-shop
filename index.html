@@ -4,109 +4,326 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Учебный интернет-магазин</title>
-  <link rel="icon" type="image/png" href="images/Ikonka.png">
+  <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
   <script src="js/main.js" defer></script>
 </head>
 <body>
-<header>
+<header class="page-header">
   <div class="site-header">
     <a class="site-logo" href="index.html">Shop_ot_bob</a>
 
-    <nav aria-label="Основная навигация">
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
       <ul class="site-nav__list">
-        <li><a href="index.html">ГЛАВНАЯ</a></li>
-        <li><a href="catalog.html">ВСЕ ТОВАРЫ</a></li>
-        <li><a href="onas.html">О НАС</a></li>
+        <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html">Главная</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="onas.html">О нас</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<main>
+<main class="main">
+  <section class="hero section">
+    <div class="hero__content">
+      <h1 class="hero__title">Руки для армрестлинга и на каждый день</h1>
+      <p class="hero__text">
+        Shop_ot_bob — учебный интернет-магазин с характером. Подберём руку под ваш стиль борьбы
+        или для бытовых задач, а примерка у нас бесплатная.
+      </p>
+      <div class="hero__actions">
+        <a class="button" href="catalog.html">Смотреть каталог</a>
+        <a class="button button--ghost" href="order.html">Оставить заявку</a>
+      </div>
+    </div>
 
-  <section class="section" id="popular">
-    <h2>Реклама товаров</h2>
-    <img
-      class="product-card__image_PROZZI"
-      src="images/PROZZI_2.png"
-      alt="Реклама товаров"
-    >
-
+    <div class="hero__media">
+      <!--
+        picture: на телефоне загружается вертикальный кадр,
+        на планшете и desktop — широкий баннер. WebP — для браузеров, которые его понимают.
+      -->
+      <picture>
+        <source
+          media="(max-width: 639px)"
+          type="image/webp"
+          srcset="images/hero-tall-360.webp 360w,
+                  images/hero-tall-720.webp 720w"
+          sizes="100vw"
+          width="720"
+          height="900"
+        >
+        <source
+          media="(max-width: 639px)"
+          srcset="images/hero-tall-360.jpg 360w,
+                  images/hero-tall-720.jpg 720w"
+          sizes="100vw"
+          width="720"
+          height="900"
+        >
+        <source
+          type="image/webp"
+          srcset="images/hero-wide-800.webp 800w,
+                  images/hero-wide-1200.webp 1200w,
+                  images/hero-wide-1600.webp 1600w"
+          sizes="(max-width: 899px) 480px, (max-width: 1187px) 45vw, 520px"
+        >
+        <img
+          class="hero__image"
+          src="images/hero-wide-800.jpg"
+          srcset="images/hero-wide-800.jpg 800w,
+                  images/hero-wide-1200.jpg 1200w,
+                  images/hero-wide-1600.jpg 1600w"
+          sizes="(max-width: 899px) 480px, (max-width: 1187px) 45vw, 520px"
+          alt="Реклама товаров"
+          width="1628"
+          height="1472"
+        >
+      </picture>
     </div>
   </section>
 
+  <section class="section" aria-labelledby="features-title">
+    <h2 class="section__title" id="features-title">Почему выбирают нас</h2>
 
-  <section class="section" id="map">
-    <h2>Где нас найти</h2>
+    <div class="features-grid">
+      <article class="feature-card">
+        <h3 class="feature-card__title">Бесплатная примерка</h3>
+        <p>Приходите в зал и попробуйте руку в деле до покупки.</p>
+      </article>
+
+      <article class="feature-card">
+        <h3 class="feature-card__title">Гарантия два сезона</h3>
+        <p>Спортивные модели выдерживают два турнирных сезона.</p>
+      </article>
+
+      <article class="feature-card">
+        <h3 class="feature-card__title">Левые и правые</h3>
+        <p>Каждая модель есть в двух вариантах — боритесь на обе руки.</p>
+      </article>
+
+      <article class="feature-card">
+        <h3 class="feature-card__title">Доставка по Москве</h3>
+        <p>Курьером за день, от 30 000 ₽ — бесплатно.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="popular" aria-labelledby="popular-title">
+    <h2 class="section__title" id="popular-title">Популярные товары</h2>
+
+    <div class="products-grid products-grid--wide">
+      <article class="product-card">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="images/pravaya_ruka-320.webp 320w,
+                    images/pravaya_ruka-480.webp 480w,
+                    images/pravaya_ruka-640.webp 640w"
+            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 270px"
+          >
+          <img
+            class="product-card__image"
+            src="images/pravaya_ruka-480.jpg"
+            srcset="images/pravaya_ruka-320.jpg 320w,
+                    images/pravaya_ruka-480.jpg 480w,
+                    images/pravaya_ruka-640.jpg 640w"
+            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 270px"
+            alt="Правая рука для армрестлинга"
+            width="640"
+            height="640"
+            loading="lazy"
+          >
+        </picture>
+        <div class="product-card__body">
+          <p class="product-card__badge">Хит</p>
+          <h3 class="product-card__title"><a href="product.html">Рука «Титан» — правая мужская</a></h3>
+          <p class="product-card__description">Крепкая мужская рука для армрестлинга. Позволяет играючи бороть всех студентов вашего потока.</p>
+          <p class="product-card__price">32&nbsp;000&nbsp;₽</p>
+          <div class="product-card__actions">
+            <a class="button button--ghost" href="product.html">Подробнее</a>
+            <button class="button product-card__button" type="button" data-product="Рука «Титан» — правая мужская">Заказать</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="images/levaya_ruka-320.webp 320w,
+                    images/levaya_ruka-480.webp 480w,
+                    images/levaya_ruka-640.webp 640w"
+            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 270px"
+          >
+          <img
+            class="product-card__image"
+            src="images/levaya_ruka-480.jpg"
+            srcset="images/levaya_ruka-320.jpg 320w,
+                    images/levaya_ruka-480.jpg 480w,
+                    images/levaya_ruka-640.jpg 640w"
+            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 270px"
+            alt="Левая рука для армрестлинга"
+            width="640"
+            height="640"
+            loading="lazy"
+          >
+        </picture>
+        <div class="product-card__body">
+          <p class="product-card__badge">Новинка</p>
+          <h3 class="product-card__title"><a href="product.html">Рука «Титан» — левая мужская</a></h3>
+          <p class="product-card__description">Левая версия флагмана для тех, кто борется на обе руки. Тот же мёртвый хват и усиленное предплечье.</p>
+          <p class="product-card__price">31&nbsp;000&nbsp;₽</p>
+          <div class="product-card__actions">
+            <a class="button button--ghost" href="product.html">Подробнее</a>
+            <button class="button product-card__button" type="button" data-product="Рука «Титан» — левая мужская">Заказать</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="images/prav_zhenskaya_ruka-320.webp 320w,
+                    images/prav_zhenskaya_ruka-480.webp 480w,
+                    images/prav_zhenskaya_ruka-640.webp 640w"
+            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 270px"
+          >
+          <img
+            class="product-card__image"
+            src="images/prav_zhenskaya_ruka-480.jpg"
+            srcset="images/prav_zhenskaya_ruka-320.jpg 320w,
+                    images/prav_zhenskaya_ruka-480.jpg 480w,
+                    images/prav_zhenskaya_ruka-640.jpg 640w"
+            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 270px"
+            alt="Правая женская рука для армрестлинга"
+            width="640"
+            height="640"
+            loading="lazy"
+          >
+        </picture>
+        <div class="product-card__body">
+          <p class="product-card__badge">Выбор чемпионок</p>
+          <h3 class="product-card__title"><a href="product.html">Рука «Валькирия» — правая женская</a></h3>
+          <p class="product-card__description">Лёгкая и быстрая женская рука для армрестлинга: резкий старт и цепкая кисть.</p>
+          <p class="product-card__price">21&nbsp;000&nbsp;₽</p>
+          <div class="product-card__actions">
+            <a class="button button--ghost" href="product.html">Подробнее</a>
+            <button class="button product-card__button" type="button" data-product="Рука «Валькирия» — правая женская">Заказать</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="images/lev_zhenskaya_ruka-320.webp 320w,
+                    images/lev_zhenskaya_ruka-480.webp 480w,
+                    images/lev_zhenskaya_ruka-640.webp 640w"
+            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 270px"
+          >
+          <img
+            class="product-card__image"
+            src="images/lev_zhenskaya_ruka-480.jpg"
+            srcset="images/lev_zhenskaya_ruka-320.jpg 320w,
+                    images/lev_zhenskaya_ruka-480.jpg 480w,
+                    images/lev_zhenskaya_ruka-640.jpg 640w"
+            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 270px"
+            alt="Левая женская рука для армрестлинга"
+            width="640"
+            height="640"
+            loading="lazy"
+          >
+        </picture>
+        <div class="product-card__body">
+          <p class="product-card__badge">Скидка −15%</p>
+          <h3 class="product-card__title"><a href="product.html">Рука «Валькирия» — левая женская</a></h3>
+          <p class="product-card__description">Левая «Валькирия» для борьбы на обе руки. Та же быстрая кисть, а сейчас ещё и по сниженной цене.</p>
+          <p class="product-card__price">20&nbsp;500&nbsp;₽ <del>24&nbsp;000&nbsp;₽</del></p>
+          <div class="product-card__actions">
+            <a class="button button--ghost" href="product.html">Подробнее</a>
+            <button class="button product-card__button" type="button" data-product="Рука «Валькирия» — левая женская">Заказать</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="hero__actions">
+      <a class="button" href="catalog.html">Весь каталог</a>
+    </p>
+  </section>
+
+  <section class="section" id="map" aria-labelledby="map-title">
+    <h2 class="section__title" id="map-title">Где нас найти</h2>
     <div class="map-container">
-      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A89a524108dad21f16cf2f4a0d76adc41d935ef46cfc1c6afd9af5f4293ef12c2&amp;source=constructor" width="100%" height="311" frameborder="0"></iframe>
+      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A89a524108dad21f16cf2f4a0d76adc41d935ef46cfc1c6afd9af5f4293ef12c2&amp;source=constructor" frameborder="0"></iframe>
     </div>
   </section>
+
+  <p class="success-message" id="quick-success" role="status" hidden>
+  Форма успешно отправлена!
+</p>
 </main>
 
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__col">
+      <p class="site-footer__title">Shop_ot_bob</p>
+      <p>Учебный интернет-магазин необычных товаров с характером.</p>
+    </div>
 
-<footer id="contacts">
-  <p>&copy; 2026 Учебный проект. Все права защищены. Работал Исмаилов Полад ЭФБО-04-25</p>
-  <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    <nav class="site-footer__col" aria-label="Навигация в подвале">
+      <p class="site-footer__title">Разделы</p>
+      <ul class="site-footer__list">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="order.html">Заявка</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="onas.html">О нас</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-footer__col">
+      <p class="site-footer__title">Контакты</p>
+      <ul class="site-footer__list">
+        <li><a href="tel:+79000000000">+7 (900) 000-00-00</a></li>
+        <li><a href="mailto:shop@example.com">shop@example.com</a></li>
+      </ul>
+      <p class="site-footer__copy">&copy; 2026 Учебный проект. Все права защищены. Работал Исмаилов Полад, ЭФБО-04-25.</p>
+      <p class="site-footer__copy">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </div>
+  </div>
 </footer>
-<dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-  <h2 id="order-dialog-title" tabindex="-1" autofocus>Оформление заявки</h2>
 
-  <form class="order-form" id="order-form" action="#" method="post" novalidate>
+<dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+  <h2 class="order-dialog__title" id="order-dialog-title" tabindex="-1" autofocus>Быстрая заявка</h2>
+
+  <form class="order-form order-form--single js-form" id="quick-form" action="#" method="post" data-success="quick-success" novalidate>
     <input id="selected-product" name="selected-product" type="hidden">
 
-    <div class="form-field">
-      <label for="order-name">Имя</label>
-      <input
-        id="order-name"
-        name="name"
-        type="text"
-        placeholder="Введите ваше имя"
-        minlength="2"
-        autocomplete="given-name"
-        required
-      >
+    <div class="order-form__group">
+      <label class="order-form__label" for="quick-name">Имя</label>
+      <input class="order-form__input" id="quick-name" name="name" type="text" minlength="2" autocomplete="given-name" placeholder="Введите ваше имя" required>
     </div>
 
-    <div class="form-field">
-      <label for="order-email">E-mail</label>
-      <input
-        id="order-email"
-        name="email"
-        type="email"
-        placeholder="example@mail.ru"
-        autocomplete="email"
-        required
-      >
+    <div class="order-form__group">
+      <label class="order-form__label" for="quick-email">E-mail</label>
+      <input class="order-form__input" id="quick-email" name="email" type="email" autocomplete="email" placeholder="example@mail.ru" required>
     </div>
 
-    <div class="form-field">
-      <label for="order-phone">Телефон</label>
-      <input
-        id="order-phone"
-        name="phone"
-        type="tel"
-        inputmode="tel"
-        placeholder="+7 (900) 000-00-00"
-        pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
-        required
-      >
-      <small>Формат: +7 (900) 000-00-00</small>
+    <div class="order-form__group">
+      <label class="order-form__label" for="quick-phone">Телефон</label>
+      <input class="order-form__input" id="quick-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+      <p class="form-note" id="quick-phone-hint">Формат: +7 (900) 000-00-00</p>
     </div>
 
-    <div class="form-field">
-      <label for="order-date">Дата связи</label>
-      <input
-        id="order-date"
-        name="date"
-        type="date"
-      >
-    </div>
-
-    <div class="form-field">
-      <label for="order-topic">Тема заявки</label>
-      <select id="order-topic" name="topic" required>
+    <div class="order-form__group">
+      <label class="order-form__label" for="quick-topic">Тема заявки</label>
+      <select class="order-form__select" id="quick-topic" name="topic" required>
         <option value="">Выберите тему</option>
         <option value="product">Заказ товара</option>
         <option value="consultation">Консультация</option>
@@ -114,37 +331,23 @@
       </select>
     </div>
 
-    <div class="form-field">
-      <label for="order-comment">Комментарий</label>
-      <textarea
-        id="order-comment"
-        name="comment"
-        rows="4"
-        placeholder="Укажите дополнительную информацию"
-      ></textarea>
+    <div class="order-form__group">
+      <label class="order-form__label" for="quick-comment">Комментарий</label>
+      <textarea class="order-form__textarea" id="quick-comment" name="comment" rows="3" placeholder="Укажите дополнительную информацию"></textarea>
     </div>
 
-    <div class="form-field form-field--checkbox">
-      <label for="order-agreement">
-        <input
-          id="order-agreement"
-          name="agreement"
-          type="checkbox"
-          required
-        >
+    <div class="order-form__group order-form__group--wide">
+      <label class="order-form__check" for="quick-agreement">
+        <input id="quick-agreement" name="agreement" type="checkbox" required>
         Я согласен на обработку данных
       </label>
     </div>
 
     <div class="form-actions">
-      <button type="button" id="close-order-dialog">Закрыть</button>
-      <button type="submit">Отправить заявку</button>
+      <button class="button" type="submit">Отправить заявку</button>
+      <button class="button button--ghost" type="button" data-close-dialog>Закрыть</button>
     </div>
   </form>
 </dialog>
-
-<p class="success-message" id="success-message" role="status" hidden>
-  Форма успешно отправлена!
-</p>
 </body>
 </html>

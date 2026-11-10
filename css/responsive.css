@@ -1,0 +1,500 @@
+/*
+  responsive.css — адаптивные стили проекта (КР №3).
+  Подключается ПОСЛЕ style.css, поэтому может переопределять базовые правила.
+
+  Подход Mobile First:
+  сначала описан вид для телефона (правила без медиазапросов),
+  затем через @media (min-width: ...) страница расширяется.
+
+  Контрольные точки:
+    640px  — крупный телефон / маленький планшет
+    768px  — планшет
+    1024px — небольшой desktop
+    1280px — широкий desktop
+*/
+
+/* ===============================
+   1. Базовые адаптивные правила
+   =============================== */
+
+/* Изображения и видео никогда не шире своего контейнера. */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Длинные слова и ссылки переносятся, а не растягивают страницу. */
+body {
+  overflow-wrap: anywhere;
+}
+
+/*
+  Общий контейнер: на телефоне — вся ширина с полями 16px,
+  на широком экране — не больше 1140px и по центру.
+*/
+.site-header,
+.main,
+.site-footer__inner {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding: 16px;
+}
+
+.main {
+  padding-block: 24px;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+/* ===============================
+   2. Шапка и навигация (Flexbox)
+   =============================== */
+
+/* Телефон: логотип сверху, под ним меню в столбик. */
+.site-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ===============================
+   3. Hero-блок (Flexbox)
+   =============================== */
+
+/* Телефон: текст, под ним картинка. */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Кнопки hero: на узком экране переносятся и не слипаются. */
+.hero__actions,
+.product-card__actions,
+.product__actions,
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* На телефоне кнопки растягиваются — по ним проще попасть пальцем. */
+.hero__actions .button,
+.product-card__actions .button,
+.product__actions .button,
+.form-actions .button {
+  flex: 1 1 140px;
+}
+
+/* В колонке картинка не растягивается на весь планшет. */
+.hero__media {
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.hero__image {
+  width: 100%;
+}
+
+/* ===============================
+   4. Сетки карточек (CSS Grid)
+   =============================== */
+
+/* Телефон: одна колонка. minmax(0, 1fr) не даёт содержимому распирать сетку. */
+.features-grid,
+.products-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+/* Карточка — flex-колонка: кнопки прижаты к низу, карточки в ряду одной высоты. */
+.product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.product-card__description {
+  flex: 1;
+}
+
+/* Квадратное изображение сохраняет пропорции при любой ширине колонки. */
+.product-card__image {
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+/* ===============================
+   5. Каталог: фильтр + товары
+   =============================== */
+
+/* Телефон: фильтр над списком товаров. */
+.catalog-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+.catalog-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.catalog-toolbar .order-form__select {
+  width: auto;
+  max-width: 100%;
+}
+
+/* ===============================
+   6. Страница товара
+   =============================== */
+
+.product {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+.product__image {
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.product__title {
+  margin: 0 0 12px;
+  font-size: 26px;
+}
+
+/* ===============================
+   7. Адаптивные таблицы
+   =============================== */
+
+/*
+  Широкая таблица прокручивается внутри своего контейнера,
+  а вся страница вбок не уезжает.
+*/
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-table {
+  width: 100%;
+  min-width: 640px;
+}
+
+/* Узкая таблица из двух колонок помещается на телефоне без прокрутки. */
+.product-table--compact {
+  min-width: 0;
+}
+
+/* ===============================
+   8. Адаптивные формы (CSS Grid)
+   =============================== */
+
+/* Телефон: все поля в одну колонку. */
+.order-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+.order-form__group {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  min-width: 0;
+}
+
+/*
+  Поля занимают всю ширину и не ниже 44px — удобно нажимать пальцем.
+  font-size 16px отключает автоматическое увеличение страницы в iOS при фокусе.
+*/
+.order-form__input,
+.order-form__select,
+.order-form__textarea {
+  width: 100%;
+  min-height: 44px;
+  font-size: 16px;
+}
+
+.order-form__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Чекбоксы и радиокнопки: крупная область нажатия. */
+.order-form__check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+}
+
+.order-form__check input {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: var(--color-primary);
+}
+
+.order-layout,
+.contacts-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+.contacts-grid__info {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+}
+
+.map-container iframe {
+  height: 260px;
+}
+
+/* ===============================
+   9. Модальное окно
+   =============================== */
+
+/* Окно не выходит за экран; длинная форма прокручивается внутри окна. */
+.order-dialog {
+  width: min(100% - 32px, 560px);
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+}
+
+/* ===============================
+   10. Подвал и «О нас»
+   =============================== */
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 24px;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+.about__image {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  margin-inline: auto;
+  border-radius: var(--radius-lg);
+}
+
+/* ===============================
+   11. Медиазапросы
+   =============================== */
+
+/* ---------- от 640px: крупный телефон ---------- */
+@media (min-width: 640px) {
+  /* Карточки и преимущества — в две колонки. */
+  .features-grid,
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  /* Кнопки перестают растягиваться. */
+  .hero__actions .button,
+  .product__actions .button,
+  .form-actions .button {
+    flex: 0 1 auto;
+  }
+}
+
+/* ---------- от 768px: планшет ---------- */
+@media (min-width: 768px) {
+  .site-header,
+  .main,
+  .site-footer__inner {
+    padding-inline: 24px;
+  }
+
+  .main {
+    padding-block: 32px;
+  }
+
+  .section {
+    margin-bottom: 48px;
+  }
+
+  /* Шапка: логотип слева, меню справа в одну строку. */
+  .site-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-nav__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .site-nav__link {
+    padding-inline: 16px;
+  }
+
+  .page-title {
+    font-size: 34px;
+  }
+
+  .hero {
+    padding: 32px;
+  }
+
+  .hero__title {
+    font-size: 36px;
+  }
+
+  /* Форма: две колонки, широкие поля — на всю строку. */
+  .order-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .order-form__group--wide,
+  .order-form .form-actions {
+    grid-column: 1 / -1;
+  }
+
+  /* В модальном окне мало места — форма остаётся в одну колонку. */
+  .order-form--single {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Товар: изображение слева, описание справа. */
+  .product {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 32px;
+    align-items: start;
+  }
+
+  .product__title {
+    font-size: 32px;
+  }
+
+  /* Контакты: информация слева, форма справа. */
+  .contacts-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    align-items: start;
+  }
+
+  .contacts-grid__map {
+    grid-column: 1 / -1;
+  }
+
+  .map-container iframe {
+    height: 340px;
+  }
+
+  .about {
+    grid-template-columns: 240px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  /* Подвал: три колонки в ряд. */
+  .site-footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .site-footer__col {
+    flex: 1;
+  }
+}
+
+/* ---------- от 900px: hero в две колонки ---------- */
+@media (min-width: 900px) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero__content,
+  .hero__media {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+/* ---------- от 1024px: небольшой desktop ---------- */
+@media (min-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  /* Каталог: фильтр становится боковой колонкой и «прилипает» при прокрутке. */
+  .catalog-layout {
+    grid-template-columns: 260px minmax(0, 1fr);
+    align-items: start;
+    gap: 32px;
+  }
+
+  .catalog-filters {
+    position: sticky;
+    top: 16px;
+  }
+
+  /* Заявка: форма слева, справа пояснение. */
+  .order-layout {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 32px;
+  }
+
+  .hero__title {
+    font-size: 42px;
+  }
+}
+
+/* ---------- от 1280px: широкий desktop ---------- */
+@media (min-width: 1280px) {
+  /* На главной помещается четыре карточки в ряд. */
+  .products-grid--wide {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .catalog-layout {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+}

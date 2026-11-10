@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заявка</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+<header class="page-header">
+  <div class="site-header">
+    <a class="site-logo" href="index.html">Shop_ot_bob</a>
+
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+      <ul class="site-nav__list">
+        <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+        <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="order.html">Заявка</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="onas.html">О нас</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="main">
+  <h1 class="page-title">Оформление заявки</h1>
+  <p class="page-lead">Заполните форму — мы перезвоним и уточним детали. Форма учебная: данные никуда не отправляются.</p>
+
+  <div class="order-layout">
+    <div>
+      <form class="order-form js-form" id="order-form" action="#" method="post" data-success="order-success" novalidate>
+        <div class="order-form__group">
+          <label class="order-form__label" for="order-product">Товар</label>
+          <select class="order-form__select" id="order-product" name="product" required>
+            <option value="">Выберите товар</option>
+            <option value="1">Рука «Титан» — правая мужская — 32&nbsp;000&nbsp;₽</option>
+            <option value="2">Рука «Титан» — левая мужская — 31&nbsp;000&nbsp;₽</option>
+            <option value="3">Рука «Валькирия» — правая женская — 21&nbsp;000&nbsp;₽</option>
+            <option value="4">Рука «Валькирия» — левая женская — 20&nbsp;500&nbsp;₽</option>
+            <option value="5">Рука «Будни» — правая мужская — 10&nbsp;000&nbsp;₽</option>
+            <option value="6">Рука «Будни» — левая мужская — 10&nbsp;000&nbsp;₽</option>
+            <option value="7">Рука «Грация» — правая женская — 9&nbsp;000&nbsp;₽</option>
+            <option value="8">Рука «Грация» — левая женская — 9&nbsp;000&nbsp;₽</option>
+          </select>
+        </div>
+
+        <div class="order-form__group">
+          <label class="order-form__label" for="order-quantity">Количество</label>
+          <input class="order-form__input" id="order-quantity" name="quantity" type="number" min="1" max="10" value="1" inputmode="numeric" required>
+          <p class="form-note" id="order-quantity-hint">От 1 до 10 штук</p>
+        </div>
+
+        <div class="order-form__group">
+          <label class="order-form__label" for="order-name">Имя</label>
+          <input class="order-form__input" id="order-name" name="name" type="text" minlength="2" autocomplete="given-name" placeholder="Введите ваше имя" required>
+        </div>
+
+        <div class="order-form__group">
+          <label class="order-form__label" for="order-email">E-mail</label>
+          <input class="order-form__input" id="order-email" name="email" type="email" autocomplete="email" placeholder="example@mail.ru" required>
+        </div>
+
+        <div class="order-form__group">
+          <label class="order-form__label" for="order-phone">Телефон</label>
+          <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+          <p class="form-note" id="order-phone-hint">Формат: +7 (900) 000-00-00</p>
+        </div>
+
+        <div class="order-form__group">
+          <label class="order-form__label" for="order-date">Дата связи</label>
+          <input class="order-form__input" id="order-date" name="date" type="date">
+          <p class="form-note" id="order-date-hint">Необязательно</p>
+        </div>
+
+        <fieldset class="order-form__fieldset order-form__group--wide">
+          <legend>Способ получения</legend>
+          <label class="order-form__check" for="order-pickup">
+            <input id="order-pickup" name="delivery" type="radio" value="pickup" checked>
+            Самовывоз из зала — бесплатно
+          </label>
+          <label class="order-form__check" for="order-courier">
+            <input id="order-courier" name="delivery" type="radio" value="courier">
+            Курьером по Москве — 500&nbsp;₽, от 30&nbsp;000&nbsp;₽ бесплатно
+          </label>
+        </fieldset>
+
+        <div class="order-form__group order-form__group--wide">
+          <label class="order-form__label" for="order-address">Адрес доставки</label>
+          <input class="order-form__input" id="order-address" name="address" type="text" autocomplete="street-address" placeholder="Город, улица, дом, квартира">
+          <p class="form-note" id="order-address-hint">Нужен только для доставки курьером</p>
+        </div>
+
+        <div class="order-form__group order-form__group--wide">
+          <label class="order-form__label" for="order-comment">Комментарий</label>
+          <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4" placeholder="Укажите дополнительную информацию"></textarea>
+        </div>
+
+        <div class="order-form__group order-form__group--wide">
+          <label class="order-form__check" for="order-agreement">
+            <input id="order-agreement" name="agreement" type="checkbox" required>
+            Я согласен на обработку данных
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button class="button" type="submit">Отправить заявку</button>
+          <button class="button button--ghost" type="reset">Очистить</button>
+        </div>
+      </form>
+
+      <p class="success-message" id="order-success" role="status" hidden>
+  Форма успешно отправлена!
+</p>
+    </div>
+
+    <aside class="order-aside" aria-label="Информация о заказе">
+      <h2>Как мы работаем</h2>
+      <ol class="order-steps">
+        <li>Вы оставляете заявку на сайте.</li>
+        <li>Мы перезваниваем в течение часа и уточняем детали.</li>
+        <li>Вы приходите на бесплатную примерку.</li>
+        <li>Забираете покупку или ждёте курьера.</li>
+      </ol>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__col">
+      <p class="site-footer__title">Shop_ot_bob</p>
+      <p>Учебный интернет-магазин необычных товаров с характером.</p>
+    </div>
+
+    <nav class="site-footer__col" aria-label="Навигация в подвале">
+      <p class="site-footer__title">Разделы</p>
+      <ul class="site-footer__list">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="order.html">Заявка</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="onas.html">О нас</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-footer__col">
+      <p class="site-footer__title">Контакты</p>
+      <ul class="site-footer__list">
+        <li><a href="tel:+79000000000">+7 (900) 000-00-00</a></li>
+        <li><a href="mailto:shop@example.com">shop@example.com</a></li>
+      </ul>
+      <p class="site-footer__copy">&copy; 2026 Учебный проект. Все права защищены. Работал Исмаилов Полад, ЭФБО-04-25.</p>
+      <p class="site-footer__copy">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
