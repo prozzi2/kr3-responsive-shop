@@ -11,19 +11,23 @@
   /* Основные цвета проекта */
   --color-bg: #ffffff;
   --color-text: #222222;
-  --color-muted: #8a8a8a;
+  /* Было #8a8a8a — контраст 3,5:1. Стало 7:1 (требование — не меньше 4,5:1). */
+  --color-muted: #595959;
   --color-primary: #0057b8;
   --color-primary-dark: #003f86;
-  --color-border: #dddddd;
-  --color-border-strong: #cccccc;
+  --color-border: #d0d0d0;
+  /* Рамка полей формы: контраст с белым фоном не меньше 3:1. */
+  --color-border-strong: #767676;
   --color-surface: #f2f2f2;
   --color-surface-accent: #eef5ff;
   --color-danger: #b00020;
-  --color-success: #168a2f;
+  /* Было #168a2f — контраст 4,4:1. Стало 6,5:1. */
+  --color-success: #0f6b22;
   --color-success-bg: #eefaf0;
   --color-white: #ffffff;
-  --color-badge-bg: #ff9800;
-  --color-badge-text: #ffffff;
+  /* Метка на карточке: тёмный текст на светлом фоне (контраст 9:1). */
+  --color-badge-bg: #ffe2b0;
+  --color-badge-text: #4d3000;
 
   /* Отступы */
   --space-xs: 4px;
@@ -166,6 +170,8 @@ a:hover {
 /* Текущая страница в меню. */
 .site-nav__link--active {
   background-color: var(--color-primary-dark);
+  /* Отличие не только цветом: добавлена рамка. */
+  box-shadow: inset 0 0 0 3px var(--color-white), 0 0 0 2px var(--color-primary-dark);
 }
 
 /* Кнопки: и <button>, и ссылки с классом .button выглядят одинаково. */
@@ -548,9 +554,37 @@ button {
   font-size: 22px;
 }
 
+.order-dialog__product {
+  margin: 0 0 var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-accent);
+}
+
+/* Крестик закрытия: без текста, поэтому у кнопки есть aria-label. */
+.modal__close {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 50%;
+  background-color: var(--color-white);
+  color: var(--color-text);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.modal__close:hover {
+  background-color: var(--color-surface);
+}
+
 /* Подпись поля. */
 .order-form__label {
   font-weight: bold;
+}
+
+/* Звёздочка обязательного поля. Для скринридера обязательность передаёт required. */
+.order-form__required {
+  color: var(--color-danger);
 }
 
 /* Основные поля формы. */
@@ -592,6 +626,19 @@ button {
 /* Подсветка ошибочных полей: aria-invalid добавляет JavaScript. */
 [aria-invalid="true"] {
   border-color: var(--color-danger);
+  border-width: 2px;
+}
+
+/* Текст ошибки: не только цвет, но и значок с подписью. */
+.form-error {
+  margin: 0;
+  color: var(--color-danger);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.form-error::before {
+  content: "⚠ ";
 }
 
 /* Сообщение об успешной отправке. */
@@ -600,4 +647,75 @@ button {
   padding: var(--space-md);
   border-left: 4px solid var(--color-success);
   background-color: var(--color-success-bg);
+}
+
+/* Пустая «живая» область не занимает места на странице. */
+.success-message:empty {
+  display: none;
+}
+
+/* ===============================
+   6. Доступность
+   =============================== */
+
+/*
+  Ссылка пропуска: спрятана за верхним краем экрана
+  и появляется, когда на неё попадает фокус с клавиатуры.
+*/
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-md);
+  z-index: 200;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-text);
+  color: var(--color-white);
+}
+
+.skip-link:focus {
+  top: var(--space-md);
+  color: var(--color-white);
+}
+
+/* Единый видимый фокус для всех интерактивных элементов. */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* На синих «таблетках» синяя обводка не видна — делаем её двойной. */
+.site-nav__link:focus-visible,
+.button:focus-visible {
+  outline: 3px solid var(--color-text);
+  box-shadow: 0 0 0 3px var(--color-white);
+}
+
+/* Заголовок окна получает фокус программно — рамка ему не нужна. */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* Текст только для скринридеров. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Уважаем системную настройку «уменьшить движение». */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

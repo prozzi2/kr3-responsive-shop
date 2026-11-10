@@ -289,6 +289,13 @@ body {
   overflow: auto;
 }
 
+.order-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 /* ===============================
    10. Подвал и «О нас»
    =============================== */
