@@ -14,6 +14,12 @@ Shop_ot_bob — учебный интернет-магазин рук для а�
 Bootstrap и другие CSS-фреймворки **не используются**: сетки, медиазапросы, формы и таблицы
 написаны вручную на Flexbox и CSS Grid.
 
+## Ссылки
+
+- Репозиторий: https://github.com/prozzi2/kr3-responsive-shop
+- Опубликованный сайт (GitHub Pages): https://prozzi2.github.io/kr3-responsive-shop/
+- Основа проекта (КР №1): https://github.com/prozzi2/kr1-html-css-shop
+
 ## Страницы
 
 | Страница | Что на ней |
@@ -163,7 +169,9 @@ kr3-responsive-shop/
 |---|---|---|
 | `index.html` | 91 | 100 |
 | `catalog.html` | 96 | 100 |
+| `product.html` | 95 | 100 |
 | `order.html` | 96 | 100 |
+| `contacts.html` | 92 | 100 |
 
 Что нашёл Lighthouse до исправлений:
 
@@ -210,6 +218,8 @@ Lighthouse проверяет только то, что можно провер�
 - **Практическая работа №13** (ветка `feature/a11y-lighthouse-audit`): аудит доступности, исправления, отчёты Lighthouse.
 - **Самостоятельные доработки** (ветка `feature/kr3-improvements`): мобильное меню, фильтр каталога,
   карточный вид таблицы, страница товара по id, сводка заказа.
+- **Практическая работа №14** (ветка `fix/kr3-final-check`): финальная проверка, повторный Lighthouse по пяти страницам,
+  `meta description`, обновление README.
 
 ## Используемые технологии
 
