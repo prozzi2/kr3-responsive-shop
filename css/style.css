@@ -1,0 +1,433 @@
+
+/* ===============================
+   1. Переменные проекта
+   =============================== */
+:root {
+  /* Основные цвета проекта */
+  --color-bg: #ffffff;
+  --color-text: #222222;
+  --color-muted: #666666;
+  --color-primary: #0057b8;
+  --color-primary-dark: #003f86;
+  --color-border: #dddddd;
+  --color-surface: #f7f7f7;
+  --color-surface-accent: #eef5ff;
+  --color-danger: #b00020;
+  --color-success: #168a2f;
+  --color-success-bg: #eefaf0;
+  --color-white: #ffffff;
+
+  /* Отступы */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* Скругления */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Размеры */
+  --container-width: 1100px;
+}
+/* ===============================
+   2. Базовые стили
+   =============================== */
+
+   /*
+  Универсальное правило для всех элементов.
+  border-box делает расчёт размеров более понятным:
+  width включает content, padding и border.
+*/
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/*
+  Убираем стандартный внешний отступ браузера у body.
+  Без этого вокруг страницы может появиться белая рамка.
+*/
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/*
+  Задаём внутренние отступы для основных областей страницы.
+  Это делает содержимое визуально отделённым от краёв окна браузера.
+*/
+header,
+main,
+footer {
+  padding: 20px;
+}
+
+/*
+  Оформляем шапку страницы.
+  Пока используется простой светло-серый фон.
+*/
+header {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/*
+  Оформляем подвал страницы тем же фоном,
+  чтобы визуально отделить его от основного содержимого.
+*/
+footer {
+  margin-top: auto;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/*
+  Ограничиваем ширину содержимого шапки,
+  чтобы оно не растягивалось слишком сильно на широких экранах.
+*/
+.site-header {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+main {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+/*
+  Оформляем текстовый логотип.
+*/
+.site-logo {
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 30px;
+  color: #222222;
+}
+
+/*
+  Убираем стандартные отступы и маркеры списка навигации.
+*/
+.site-nav__list {
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+/*
+  Добавляем расстояние между пунктами меню.
+*/
+.site-nav__list li {
+  flex: 1;
+  margin: 0;
+}
+
+
+/* ===============================
+   3. Общие элементы интерфейса
+   =============================== */
+/*
+  Оформляем ссылки меню.
+*/
+.site-nav__list a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: 24px;
+  background-color: #0057b8;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/*
+  При наведении мыши подчёркиваем ссылку.
+  Подробно состояния интерфейса будут рассмотрены в практической работе 1.7.
+*/
+.site-nav__list a:hover {
+  background-color: #003f86;
+  text-decoration: none;
+}
+/* ===============================
+   4. Компоненты страницы
+   =============================== */
+/*
+  Hero-блок — первый крупный блок страницы.
+  Он визуально отделяется от остальных разделов фоном и отступами.
+*/
+.hero {
+  max-width: 1100px;
+  margin: 0 auto 32px;
+  padding: 32px 20px;
+  background-color: #eef5ff;
+  border-radius: 12px;
+}
+
+/*
+  Общий класс для разделов страницы.
+*/
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/*
+  Убираем лишний верхний отступ у заголовков разделов.
+*/
+.section h2 {
+  width: 100%;
+}
+
+
+.map-container {
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/*
+  Карточка товара — самостоятельный блок.
+  На следующих занятиях карточки будут доработаны и выстроены в сетку.
+*/
+.product-card {
+  gap: 16px;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #0069f1;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+
+.product-card__image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.product-card__image_PROZZI {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section h2 {
+  margin: 0 0 20px;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  padding: 0;
+}
+
+/*
+  Убираем лишний верхний отступ у заголовка карточки.
+*/
+.product-card h3 {
+  margin-top: 0;
+}
+
+/*
+  Пока это обычная ссылка, но визуально она оформляется как кнопка.
+*/
+.button {
+  display: inline-block;
+  padding: 10px 16px;
+  color: #ffffff;
+  background-color: #0057b8;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/*
+  Простое состояние наведения для кнопки.
+*/
+.button:hover {
+  background-color: #003f86;
+}
+
+/*
+  Дополнительный информационный блок.
+*/
+.aside-info {
+  max-width: 1100px;
+  margin: 0 auto 32px;
+  padding: 16px;
+  border-left: 4px solid #0057b8;
+  background-color: #f7f7f7;
+}
+
+/* ===============================
+   5. Форма и модальное окно
+   =============================== */
+/*
+  Модальное окно.
+  Элемент dialog сам умеет открываться поверх страницы.
+*/
+.order-dialog {
+  width: min(100% - 32px, 560px);
+  padding: 24px;
+  border: none;
+  border-radius: 12px;
+}
+
+/*
+  Затемнение фона за модальным окном.
+*/
+.order-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/*
+  Поле формы.
+  Каждый блок получает нижний отступ.
+*/
+.form-field {
+  margin-bottom: 16px;
+}
+
+/*
+  Подпись поля.
+*/
+.form-field label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+/*
+  Основные поля формы.
+*/
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font: inherit;
+}
+
+/*
+  Checkbox не должен занимать всю ширину.
+*/
+.form-field input[type="checkbox"] {
+  width: auto;
+}
+
+/*
+  Подсказка под полем телефона.
+*/
+.form-field small {
+  display: block;
+  margin-top: 4px;
+  color: #666666;
+}
+
+/*
+  Видимый фокус для клавиатурной навигации.
+*/
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible,
+.form-actions button:focus-visible {
+  outline: 2px solid #0057b8;
+  outline-offset: 2px;
+}
+
+/*
+  Подсветка ошибочных полей.
+  Атрибут aria-invalid будет добавляться через JavaScript.
+*/
+.form-field [aria-invalid="true"] {
+  border-color: #b00020;
+}
+
+/*
+  Кнопки формы.
+*/
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/*
+  Сообщение об успешной отправке.
+*/
+.success-message {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 16px;
+  border-left: 4px solid #168a2f;
+  background-color: #eefaf0;
+}
+
+/* Кнопки используют шрифт страницы и видимый указатель. */
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button.button {
+  border: none;
+}
+
+.product-card__button:focus-visible {
+  outline: 2px solid #0057b8;
+  outline-offset: 2px;
+}
+
+
+/*Сворачивающийся каталог*/
+.catalog-details summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.about {
+  width: 100%;
+  padding: 40px 20px;
+}
+
+.about p {
+  margin: 0 0 20px;
+  line-height: 1.7;
+}
+
+.about p:last-child {
+  margin-bottom: 0;
+}

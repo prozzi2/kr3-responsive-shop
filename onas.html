@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тут я вам вешаю лапшу на ушы</title>
+    <link rel="icon" type="image/png" href="images/Ikonka.png">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+<header>
+  <div class="site-header">
+    <a class="site-logo" href="index.html">Shop_ot_bob</a>
+
+    <nav aria-label="Основная навигация">
+      <ul class="site-nav__list">
+        <li><a href="index.html">ГЛАВНАЯ</a></li>
+        <li><a href="catalog.html">ВСЕ ТОВАРЫ</a></li>
+        <li><a href="onas.html">О НАС</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="section" id="about">
+  <p>
+    Shop_ot_bob — учебный интернет-магазин необычных товаров с характером. Мы подошли к созданию каталога с юмором: здесь даже рука для армрестлинга становится товаром, а её описание — поводом улыбнуться.
+  </p>
+  <p>
+    Сайт создан в рамках изучения фронтенд- и бэкенд-разработки. На нём мы учимся оформлять карточки товаров, создавать удобную навигацию и работать с формами заказов.
+  </p>
+  <p>
+    Наш проект постепенно развивается: появляются новые страницы, функции и идеи. Заглядывайте в каталог и знакомьтесь с тем, что мы придумали!
+  </p>
+  <p>
+    !!!!Поборитесь со мной уже нормально!!!!
+  </p>
+</main>
+
+<footer id="contacts">
+  <p>&copy; 2026 Учебный проект. Все права защищены. Работал Исмаилов Полад ЭФБО-04-25</p>
+  <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+</footer>
+<dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+  <h2 id="order-dialog-title" tabindex="-1" autofocus>Оформление заявки</h2>
+
+  <form class="order-form" id="order-form" action="#" method="post" novalidate>
+    <input id="selected-product" name="selected-product" type="hidden">
+
+    <div class="form-field">
+      <label for="order-name">Имя</label>
+      <input
+        id="order-name"
+        name="name"
+        type="text"
+        placeholder="Введите ваше имя"
+        minlength="2"
+        autocomplete="given-name"
+        required
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="order-email">E-mail</label>
+      <input
+        id="order-email"
+        name="email"
+        type="email"
+        placeholder="example@mail.ru"
+        autocomplete="email"
+        required
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="order-phone">Телефон</label>
+      <input
+        id="order-phone"
+        name="phone"
+        type="tel"
+        inputmode="tel"
+        placeholder="+7 (900) 000-00-00"
+        pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+        required
+      >
+      <small>Формат: +7 (900) 000-00-00</small>
+    </div>
+
+    <div class="form-field">
+      <label for="order-date">Дата связи</label>
+      <input
+        id="order-date"
+        name="date"
+        type="date"
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="order-topic">Тема заявки</label>
+      <select id="order-topic" name="topic" required>
+        <option value="">Выберите тему</option>
+        <option value="product">Заказ товара</option>
+        <option value="consultation">Консультация</option>
+        <option value="delivery">Доставка</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="order-comment">Комментарий</label>
+      <textarea
+        id="order-comment"
+        name="comment"
+        rows="4"
+        placeholder="Укажите дополнительную информацию"
+      ></textarea>
+    </div>
+
+    <div class="form-field form-field--checkbox">
+      <label for="order-agreement">
+        <input
+          id="order-agreement"
+          name="agreement"
+          type="checkbox"
+          required
+        >
+        Я согласен на обработку данных
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" id="close-order-dialog">Закрыть</button>
+      <button type="submit">Отправить заявку</button>
+    </div>
+  </form>
+</dialog>
+
+<p class="success-message" id="success-message" role="status" hidden>
+  Форма успешно отправлена!
+</p>
+</body>
+</html>
